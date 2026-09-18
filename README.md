@@ -156,44 +156,50 @@ A lightweight web interface provides:
 ---
 
 ## 📁 Repository Structure
+
 ```text
-rag-platform/
+RAG-Platform/
 │
-├── app.py                 # Streamlit application layer
-├── ingest.py              # Document ingestion pipeline
-├── chunking.py            # Text segmentation logic
-├── embeddings.py          # Embedding generation layer
-├── vectorstore.py         # Vector DB abstraction layer
-├── retriever.py           # Semantic retrieval engine
-├── rag_chain.py           # RAG orchestration pipeline
-├── evaluation.py          # Ragas-based evaluation suite
+├── Backend/
+│   ├── main.py              # FastAPI backend and API endpoints
+│   ├── vector_db.py         # Vector database and retrieval logic
+│   └── uploads/             # Uploaded PDF documents (local only)
 │
-├── data/                 # Raw document inputs
-├── vectorstore/          # Persistent vector index
-└── README.md
+├── Frontend/
+│   ├── index.html           # Web interface
+│   ├── script.js            # Frontend logic and API communication
+│   └── style.css            # Frontend styling
+│
+├── chroma_db/               # Persistent ChromaDB vector database
+├── data/                    # Document data
+│
+├── test_ai.py               # AI/RAG testing
+├── README.md                # Project documentation
+└── .gitignore               # Git ignore rules
 ```
 
 ---
 
 ## 🎯 Engineering Objectives
 
-This system demonstrates competency in:
+This practice project focuses on developing skills in:
 
 - Retrieval-augmented generation system design
 - Vector search and embedding-based retrieval
-- LLM orchestration and prompt conditioning
-- Modular pipeline architecture
-- Evaluation-driven development for LLM applications
-- Local-first AI deployment strategies
+- LLM orchestration and prompt construction
+- Building and integrating LLM application components
+- Local AI deployment using Ollama
+- Planned evaluation of RAG performance using Ragas
 
 ---
 
 ## 📌 Design Principles
+
 - Grounded generation over open-ended inference
 - Modular separation of retrieval and generation layers
-- Deterministic preprocessing for reproducibility
-- Evaluation-first iteration loop
-- Local-first architecture for data privacy control
+- Consistent preprocessing for reproducibility
+- Planned evaluation-driven iteration using Ragas
+- Local-first architecture using Ollama for greater control over data
 
 ---
 ## 🧠 Summary
