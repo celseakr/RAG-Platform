@@ -78,6 +78,7 @@ Example interaction
 Ask: "What does the document say about the refund policy?"
 
 Answer: "Refunds are eligible within 30 days under the conditions specified in section 4.2..."
+
 ---
 
 ## Requirements:
