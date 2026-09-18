@@ -15,21 +15,20 @@ This system enables semantic search and question answering over private document
 - 🔎 Semantic search using dense embeddings (not keyword-based search)
 - 📄 PDF ingestion with structured text chunking for unstructured documents
 - 💬 Context-grounded LLM responses to reduce hallucinations
-- 📊 Evaluation-driven development using Ragas (faithfulness, relevance, precision)
-- ⚙️ Fully modular architecture (easy to extend, test, and debug)
 - 🔐 Local-first inference using Ollama for data privacy
+- - 📊 Coming soon: RAG evaluation using Ragas metrics such as faithfulness, relevance, and precision
 
 ---
 
 ## ℹ️ Overview
 
-This project builds a RAG system that lets you ask questions about private document collections and get answers based on the actual content inside them.
+This is a practice project focused on building an end-to-end Retrieval-Augmented Generation (RAG) system for working with private document collections.
 
-It combines semantic search with a local LLM so that responses are generated using relevant retrieved context instead of general model knowledge.
+The system allows users to ask questions about uploaded documents and receive answers based on the actual content retrieved from those documents. It combines semantic search with a locally running LLM, allowing responses to be generated using relevant retrieved context rather than relying solely on the model's general knowledge.
 
-The system is designed for practical use cases like internal document search, knowledge assistants, and exploring unstructured data in a structured way.
+The project explores practical RAG use cases such as internal document search, knowledge assistants, and working with unstructured data.
 
-The goal is to show end-to-end skills in building LLM applications, including embeddings, retrieval pipelines, vector databases, and evaluation-driven development.
+The main goal of this project is to develop and demonstrate practical skills in building LLM-powered applications, including document ingestion, text chunking, embeddings, semantic retrieval, vector databases, and local LLM inference.
 
 ---
 
@@ -43,29 +42,42 @@ GitHub: https://github.com/celseakr
 ## 🚀 Setup & Execution
 1. Clone repository 
 ```bash
-git clone https://github.com/your-username/rag-platform.git
-cd rag-platform
+git clone https://github.com/celseakr/RAG-Platform.git cd RAG-Platform
 ```
-2. Install dependencies
+2. Create and activate a virtual environment
+
+Windows PowerShell:
+```bash
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+3. Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
-3. Start local LLM runtime
- ```bash 
+4. Start Ollama
+
+Make sure Ollama is installed and running, then start the local LLM:
+
+```bash
 ollama run llama3
 ```
-4. Launch application
- ```bash
-streamlit run app.py
+5. Start the backend
+```bash
+uvicorn Backend.main:app --reload
 ```
+The FastAPI backend will start locally and handle document uploads, retrieval, and question answering.
 
-Example interaction:
-```python
->>> Ask: "What does the document say about refund policy?"
->>> Answer: "Refunds are eligible within 30 days under conditions specified in section 4.2..."
-```
-Upload a PDF, then query it using natural language.
+6. Launch the frontend
 
+Open the frontend in your browser using the local development setup for the project.
+
+Upload a PDF and ask questions about its contents using natural language.
+
+Example interaction
+Ask: "What does the document say about the refund policy?"
+
+Answer: "Refunds are eligible within 30 days under the conditions specified in section 4.2..."
 ---
 
 ## Requirements:
@@ -79,14 +91,14 @@ Upload a PDF, then query it using natural language.
 
 ```mermaid
 flowchart TD
-    A[User Question] --> B[Streamlit UI]
-    B --> C[Query Embedding]
-    C --> D[Vector Database Search]
-    D --> E[Retrieved Context Chunks]
-    E --> F[Prompt Construction]
-    F --> G[Local LLM]
-    G --> H[Generated Answer]
-    H --> I[RAGAS Evaluation]
+    A[User Question] --> B[Frontend]
+    B --> C[FastAPI Backend]
+    C --> D[Query Embedding]
+    D --> E[Vector Database Search]
+    E --> F[Retrieved Context Chunks]
+    F --> G[Prompt Construction]
+    G --> H[Local LLM via Ollama]
+    H --> I[Generated Answer]
 ```
   
 ---
@@ -94,13 +106,15 @@ flowchart TD
 ## 🧰 Technology Stack
 
 - **LLM Runtime:** Ollama (LLaMA 3)
-- **Embeddings:** Open-source sentence transformer models
-- **Vector Database:** ChromaDB (local), Pinecone-compatible abstraction
-- **Orchestration:** LangChain
-- **Document Processing:** PyPDF
-- **Evaluation:** Ragas (faithfulness, answer relevance, context precision)
-- **Frontend:** Streamlit
-- **Language:** Python
+- **Embeddings:** Ollama embeddings (nomic-embed-text)
+- **Vector Database:** ChromaDB (local)
+-**Backend**: FastAPI
+- **Frontend**: HTML, CSS, JavaScript
+- **Document Processing**: PyPDF
+- **Text Processing**: NLTK
+- **Orchestration**: LangChain
+- **Language**: Python
+- **Evaluation**: Ragas (planned)
 
 ---
 
@@ -121,7 +135,7 @@ flowchart TD
 - Grounds responses strictly in retrieved documents
 - Reduces hallucinations through constrained generation
 
-### 📊 Evaluation Layer
+### 📊 Evaluation Layer (planned soon)
 - Uses Ragas to evaluate response quality
 - Measures:
   - Faithfulness to source context
@@ -133,12 +147,12 @@ flowchart TD
 
 ## 🖥️ Interface
 
-A lightweight Streamlit interface provides:
+A lightweight web interface provides:
 
-- Upload and ingestion of PDF documents
-- Interactive question-answering over documents
-- Real-time generation of grounded responses
-
+- 📄 Upload and ingestion of PDF documents
+- 💬 Interactive question-answering over uploaded documents
+- ⚡ Real-time generation of context-grounded responses
+- 🔗 Communication with the FastAPI backend through API endpoints
 ---
 
 ## 📁 Repository Structure
