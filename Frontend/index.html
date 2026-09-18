@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>DocQuery</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Background glow -->
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <main class="app">
+      <!--
+      <Top navigation >
+      <header class="topbar">
+        <div class="traffic-lights">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="address-bar">
+          <span>✦</span>
+          <span>docquery.local</span>
+          <span class="dots">•••</span>
+        </div>
+
+        <div class="brand">✦ DocQuery</div>
+
+        <button class="profile">C</button>
+      </header>
+      -->
+
+      <!-- Main hero section -->
+      <section class="hero">
+        <div class="eyebrow">✦ Your shortcut through the paperwork</div>
+
+        <h1>
+          Give me a PDF.<br />
+          <span>I'll do the boring part.</span>
+        </h1>
+
+        <p class="subtitle">Less scrolling. More answers.</p>
+
+        <!-- Main card -->
+        <div class="rag-card">
+          <!-- Tabs -->
+          <div class="tabs">
+            <button class="tab active" data-tab="upload">↑ Upload PDF</button>
+
+            <button class="tab" data-tab="chat">✦ Ask questions</button>
+
+            <button class="tab" data-tab="documents">▱ Documents</button>
+
+            <div class="status">
+              <span></span>
+              Local & private
+            </div>
+          </div>
+
+          <!-- UPLOAD PANEL -->
+          <div class="panel active" id="upload-panel">
+            <div class="upload-area">
+              <div class="upload-icon">↑</div>
+
+              <h2>What are we reading today?</h2>
+
+              <p>Drop your PDF here, or choose a file.</p>
+
+              <label class="choose-button">
+                Choose PDF
+
+                <input type="file" id="file-input" accept=".pdf" />
+              </label>
+
+              <!-- Selected file -->
+              <div class="file-info" id="file-info">
+                <div class="pdf-icon">PDF</div>
+
+                <div>
+                  <strong id="file-name"> document.pdf </strong>
+
+                  <small id="file-size"> Ready to read </small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHAT PANEL -->
+          <div class="panel" id="chat-panel">
+            <div class="chat-header">
+              <div>
+                <small>CURRENT DOCUMENT</small>
+
+                <h2 id="document-name">No PDF uploaded yet</h2>
+              </div>
+
+              <span class="ready"> Waiting </span>
+            </div>
+
+            <!-- Messages -->
+            <div class="messages" id="messages">
+              <div class="message ai-message">
+                <div class="message-icon">✦</div>
+
+                <div>
+                  <small>DOCQUERY</small>
+
+                  <p>Give me a document and a question. I’ll do the digging.</p>
+                  <!--You could read it. Or you could ask me.-->
+                </div>
+              </div>
+            </div>
+
+            <!-- Thinking indicator -->
+            <div id="thinking" class="message thinking">
+              <div class="message-icon">✦</div>
+
+              <div>
+                <small>DOCQUERY</small>
+                <p>
+                  Thinking
+                  <span class="thinking-dot"></span>
+                  <span class="thinking-dot"></span>
+                  <span class="thinking-dot"></span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Question input -->
+            <form class="question-box" id="question-form">
+              <input
+                type="text"
+                id="question-input"
+                placeholder="What would you like to know?"
+              />
+
+              <button type="submit">→</button>
+            </form>
+
+            <!-- Suggested questions -->
+            <div class="suggestions">
+              <button>Summarise this document</button>
+
+              <button>What are the key points?</button>
+
+              <button>Explain it simply</button>
+            </div>
+          </div>
+
+          <!-- DOCUMENT PANEL -->
+          <div class="panel" id="documents-panel">
+            <div class="documents-header">
+              <div>
+                <small>YOUR LIBRARY</small>
+
+                <h2>Documents I've been forced to read</h2>
+              </div>
+
+              <span> 0 files </span>
+            </div>
+
+            <div class="empty-state">
+              <div>▱</div>
+
+              <p>No documents yet.</p>
+
+              <small> Upload a PDF and it will appear here. </small>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-text">
+          <span>Powered by your RAG pipeline</span>
+
+          <span>•</span>
+
+          <span>ChromaDB + Ollama</span>
+
+          <span>•</span>
+
+          <span>Built with curiosity</span>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

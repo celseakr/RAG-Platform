@@ -114,19 +114,20 @@ def prepare_chunks_with_metadata(pdf_pages,file_name):
     return all_chunks, all_metadata
 
 #Retrieval
-def search_query(query, n_results=2):
+def search_query(query, file_name, n_results=2):
     if not query:
         return {"documents": [[]], "distances": [[]], "metadatas": [[]]}
 
     return collection.query(
         query_texts=[query],
         n_results=n_results,
+        where={"file": file_name},
         include=["documents", "distances", "metadatas"]
     )
 
 #helper for LLM
-def retrieve_context(query):
-    results = search_query(query)
+def retrieve_context(query, file_name):
+    results = search_query(query, file_name)
 
     docs = results["documents"][0]
     metas = results["metadatas"][0]
@@ -136,8 +137,8 @@ def retrieve_context(query):
 
 import ollama
 
-def rag_answer(query):
-    docs = retrieve_context(query)
+def rag_answer(query, file_name):
+    docs = retrieve_context(query, file_name)
     context = "\n\n".join(
         f"Page {m.get('page')}: {d}"
         for d, m in docs
